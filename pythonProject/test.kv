@@ -1,0 +1,59 @@
+<Gerenciador>:
+    Menu:
+        name: 'menu'
+    Tarefas:
+        name: 'tarefas'
+
+
+<Menu>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 100
+        spacing: 25
+        Image:
+            source: 'images/xaropinho.jpg'
+            size_hint_y: None
+            height: 200
+            allow_stretch: True
+
+        Button:
+            text: 'Tarefas'
+            on_release:app.root.current = 'tarefas'
+        Button:
+            text: 'Rapaaaaaaaaaaz!'
+            on_release: root.play_sound()
+        Button:
+            text: 'Sair'
+            on_release: app.stop()
+
+<Tarefas>:
+    BoxLayout:
+        orientation: 'vertical'
+        ScrollView:
+            BoxLayout:
+                id: box
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+        BoxLayout:
+            size_hint_y: None
+            height: 60
+            TextInput:
+                id: texto
+            Button:
+                text: '+'
+                size_hint_x: None
+                width: 200
+                on_release: root.addWidget()
+
+<Tarefa>:
+    size_hint_y: None
+    height: 200
+    Label:
+        id: label
+        font_size: 30
+    Button:
+        text: 'x'
+        size_hint_x: None
+        width: 200
+        on_release: app.root.get_screen('tarefas').ids.box.remove_widget(root)
