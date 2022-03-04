@@ -17,11 +17,11 @@
             allow_stretch: True
 
         Button:
-            text: 'Tarefas'
-            on_release:app.root.current = 'tarefas'
+            text: 'Vídeo'
+            on_release: root.playVideo1()
         Button:
             text: 'Rapaaaaaaaaaaz!'
-            on_release: root.play_sound()
+            on_release: root.playSound()
         Button:
             text: 'Sair'
             on_release: app.stop()
@@ -29,12 +29,22 @@
 <Tarefas>:
     BoxLayout:
         orientation: 'vertical'
+
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title: 'Tarefas'
+                    on_release: app.root.current = 'menu'
+                ActionButton:
+                    text: 'Sair'
+                    on_release: app.stop()
         ScrollView:
             BoxLayout:
                 id: box
                 orientation: 'vertical'
                 size_hint_y: None
                 height: self.minimum_height
+
         BoxLayout:
             size_hint_y: None
             height: 60
